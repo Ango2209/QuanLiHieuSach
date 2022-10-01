@@ -41,7 +41,7 @@ public class PanelThanhToan extends JPanel {
 		panel_2.setBackground(new Color(128, 128, 192));
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\Money-icon.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("/img/Money-icon.png"));
 		
 		JButton btnNewButton = new JButton("Xóa");
 		btnNewButton.setBackground(new Color(176, 172, 213));

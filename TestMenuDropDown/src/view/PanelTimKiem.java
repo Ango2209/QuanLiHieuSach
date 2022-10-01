@@ -89,7 +89,7 @@ public class PanelTimKiem extends JPanel {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Tìm Kiếm");
-		btnNewButton.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\Search-icon.png"));
+		btnNewButton.setIcon(new ImageIcon("/img/Search-icon.png"));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setBounds(558, 234, 145, 37);
 		panel_1.add(btnNewButton);
@@ -110,7 +110,7 @@ public class PanelTimKiem extends JPanel {
 		panel_1.add(textField_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\Search-icon-background.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("/img/Search-icon-background.png"));
 		lblNewLabel_2.setBounds(968, 33, 255, 160);
 		panel_1.add(lblNewLabel_2);
 		panel.setLayout(null);

@@ -53,12 +53,12 @@ public class Main extends javax.swing.JFrame {
 	}
  
     private void execute() {
-        ImageIcon iconStaff = new ImageIcon(getClass().getResource("book-search.png"));
-        ImageIcon iconCart = new ImageIcon(getClass().getResource("cart-icon.png"));
-        ImageIcon iconDatabase = new ImageIcon(getClass().getResource("Help-icon.png"));
-        ImageIcon iconMessage = new ImageIcon(getClass().getResource("message.png"));
-        ImageIcon iconSubMenu = new ImageIcon(getClass().getResource("subMenu.png"));
-        ImageIcon iconNext = new ImageIcon(getClass().getResource("next.png"));
+        ImageIcon iconStaff = new ImageIcon(getClass().getResource("/img/book-search.png"));
+        ImageIcon iconCart = new ImageIcon(getClass().getResource("/img/cart-icon.png"));
+        ImageIcon iconDatabase = new ImageIcon(getClass().getResource("/img/Help-icon.png"));
+        ImageIcon iconMessage = new ImageIcon(getClass().getResource("/img/message.png"));
+        ImageIcon iconSubMenu = new ImageIcon(getClass().getResource("/img/subMenu.png"));
+        ImageIcon iconNext = new ImageIcon(getClass().getResource("/img/next.png"));
         //  create submenu staff
         
         MenuItem menuStaff1 = new MenuItem(iconSubMenu, "Tìm Kiếm", new ActionListener() {
@@ -161,7 +161,7 @@ public class Main extends javax.swing.JFrame {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
         
         JLabel lblIconHeader = new JLabel("");
-        ImageIcon iconHeader = new ImageIcon(getClass().getResource("Books-2-icon.png"));
+        ImageIcon iconHeader = new ImageIcon(getClass().getResource("/img/Books-2-icon.png"));
         getContentPane().setLayout(null);
         lblIconHeader.setIcon(iconHeader);
 

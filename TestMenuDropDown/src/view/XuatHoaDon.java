@@ -68,7 +68,7 @@ public class XuatHoaDon extends JPanel {
 		panel.add(lblNewLabel_4);
 		
 		JButton btnNewButton = new JButton("Xuất hóa đơn");
-		btnNewButton.setIcon(new ImageIcon(XuatHoaDon.class.getResource("bill-icon.png")));
+		btnNewButton.setIcon(new ImageIcon(XuatHoaDon.class.getResource("/img/bill-icon.png")));
 		btnNewButton.setBackground(new Color(172, 175, 213));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -114,7 +114,7 @@ public class XuatHoaDon extends JPanel {
 		scrollPane1.setViewportView(table_4);
 		
 		JButton btnNewButton_1 = new JButton("Làm mới");
-		btnNewButton_1.setIcon(new ImageIcon(XuatHoaDon.class.getResource("refresh-page-option.png")));
+		btnNewButton_1.setIcon(new ImageIcon(XuatHoaDon.class.getResource("/img/refresh-page-option.png")));
 		btnNewButton_1.setBackground(new Color(172, 175, 213));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_1.setBounds(799, 149, 162, 37);
@@ -122,7 +122,7 @@ public class XuatHoaDon extends JPanel {
 		
 		JButton btnNewButton_2 = new JButton("Tìm Kiếm");
 		btnNewButton_2.setBackground(new Color(172, 175, 213));
-		btnNewButton_2.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\Search-icon.png"));
+		btnNewButton_2.setIcon(new ImageIcon("/img/Search-icon.png"));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_2.setBounds(213, 147, 152, 39);
 		panel.add(btnNewButton_2);

@@ -72,13 +72,13 @@ public class ThongKeDoanhThu extends JPanel {
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/view/calendar.png")));
+		btnNewButton.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/img/calendar.png")));
 		
 		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/view/calendar.png")));
+		btnNewButton_1.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/img/calendar.png")));
 		
 		JButton btnNewButton_3 = new JButton("In báo cáo");
-		btnNewButton_3.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/view/printer.png")));
+		btnNewButton_3.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/img/printer.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(

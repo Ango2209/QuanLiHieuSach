@@ -28,7 +28,7 @@ public class PanelTrangChuKH extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\hinh-nen.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("/img/hinh-nen.jpg"));
 		lblNewLabel.setBounds(0, 104, 854, 572);
 		panel.add(lblNewLabel);
 		
@@ -39,7 +39,7 @@ public class PanelTrangChuKH extends JPanel {
 		
 		JButton btnNewButton = new JButton("Đăng Xuất");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnNewButton.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\Button-Log-Off-icon.png"));
+		btnNewButton.setIcon(new ImageIcon("/img/Button-Log-Off-icon.png"));
 		btnNewButton.setBounds(935, 700, 279, 81);
 		panel.add(btnNewButton);
 		setLayout(groupLayout);

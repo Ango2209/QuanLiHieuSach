@@ -142,7 +142,7 @@ public class CapNhatSach extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(CapNhatSach.class.getResource("/view/add-1-icon.png")));
+		btnNewButton.setIcon(new ImageIcon(CapNhatSach.class.getResource("/img/add-1-icon.png")));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setBounds(205, 267, 133, 35);
 		panel.add(btnNewButton);
@@ -152,7 +152,7 @@ public class CapNhatSach extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLu.setIcon(new ImageIcon(CapNhatSach.class.getResource("/view/disk-icon.png")));
+		btnLu.setIcon(new ImageIcon(CapNhatSach.class.getResource("/img/disk-icon.png")));
 		btnLu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLu.setBounds(449, 267, 96, 35);
 		panel.add(btnLu);
@@ -162,7 +162,7 @@ public class CapNhatSach extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1.setIcon(new ImageIcon(CapNhatSach.class.getResource("/view/Gear-icon.png")));
+		btnNewButton_1_1.setIcon(new ImageIcon(CapNhatSach.class.getResource("/img/Gear-icon.png")));
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_1_1.setBounds(665, 267, 158, 35);
 		panel.add(btnNewButton_1_1);
@@ -172,7 +172,7 @@ public class CapNhatSach extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1_1.setIcon(new ImageIcon(CapNhatSach.class.getResource("/view/Button-Delete-icon.png")));
+		btnNewButton_1_1_1.setIcon(new ImageIcon(CapNhatSach.class.getResource("/img/Button-Delete-icon.png")));
 		btnNewButton_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_1_1_1.setBounds(917, 267, 96, 35);
 		panel.add(btnNewButton_1_1_1);

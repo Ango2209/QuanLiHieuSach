@@ -102,7 +102,7 @@ public class CapNhatKhachHang extends JPanel {
 		panel_3.setLayout(null);
 		
 		JButton btnNewButton = new JButton("C\u1EADp nh\u1EADt ");
-		btnNewButton.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/view/updated.png")));
+		btnNewButton.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/img/updated.png")));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setBackground(new Color(176, 172, 213));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -113,14 +113,14 @@ public class CapNhatKhachHang extends JPanel {
 		panel_3.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Th\u00EAm");
-		btnNewButton_1.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/view/plus (1).png")));
+		btnNewButton_1.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/img/plus (1).png")));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_1.setBackground(new Color(176, 172, 213));
 		btnNewButton_1.setBounds(432, 0, 140, 41);
 		panel_3.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("X\u00F3a");
-		btnNewButton_2.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/view/delete.png")));
+		btnNewButton_2.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/img/delete.png")));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_2.setBackground(new Color(176, 172, 213));
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class CapNhatKhachHang extends JPanel {
 		panel_3.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("L\u00E0m m\u1EDBi");
-		btnNewButton_3.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/view/refresh-page-option.png")));
+		btnNewButton_3.setIcon(new ImageIcon(CapNhatKhachHang.class.getResource("/img/refresh-page-option.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_3.setBackground(new Color(176, 172, 213));
 		btnNewButton_3.setBounds(921, 0, 140, 41);

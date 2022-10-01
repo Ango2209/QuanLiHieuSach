@@ -60,7 +60,7 @@ public class NhapHoaDon extends JPanel {
 		panel_1.add(lblNewLabel);
 		
 		JButton btnThemHoaDon = new JButton("Thêm hóa đơn");
-		btnThemHoaDon.setIcon(new ImageIcon(NhapHoaDon.class.getResource("/view/plus.png")));
+		btnThemHoaDon.setIcon(new ImageIcon(NhapHoaDon.class.getResource("/img/plus.png")));
 		btnThemHoaDon.setBackground(new Color(0, 255, 0));
 		btnThemHoaDon.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnThemHoaDon.addActionListener(new ActionListener() {

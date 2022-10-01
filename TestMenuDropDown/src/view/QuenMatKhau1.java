@@ -73,7 +73,7 @@ public class QuenMatKhau1 extends JFrame {
 		
 		JButton btnXacThuc = new JButton("");
 		btnXacThuc.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnXacThuc.setIcon(new ImageIcon(QuenMatKhau1.class.getResource("/view/Ok-icon.png")));
+		btnXacThuc.setIcon(new ImageIcon(QuenMatKhau1.class.getResource("/img/Ok-icon.png")));
 		btnXacThuc.setBackground(new Color(255, 255, 255));
 		btnXacThuc.setBounds(348, 124, 31, 32);
 		contentPane.add(btnXacThuc);

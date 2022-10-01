@@ -40,7 +40,7 @@ public class PanelLichSu extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnNewButton = new JButton("Xem Hóa Đơn");
-		btnNewButton.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\bill-icon.png"));
+		btnNewButton.setIcon(new ImageIcon("/img/bill-icon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -53,7 +53,7 @@ public class PanelLichSu extends JPanel {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("E:\\Homeworks\\OOP\\20115331_NguyenVanNgo\\TestMenuDropDown\\src\\view\\File-History-icon.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("/img/File-History-icon.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

@@ -111,7 +111,7 @@ public class TimKiemKhachHang extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnTimKiemKhachHang.setIcon(new ImageIcon(TimKiemKhachHang.class.getResource("/view/loupe (1).png")));
+		btnTimKiemKhachHang.setIcon(new ImageIcon(TimKiemKhachHang.class.getResource("/img/loupe (1).png")));
 		btnTimKiemKhachHang.setBackground(new Color(0, 255, 0));
 		btnTimKiemKhachHang.setBounds(574, 91, 138, 40);
 		panel.add(btnTimKiemKhachHang);
