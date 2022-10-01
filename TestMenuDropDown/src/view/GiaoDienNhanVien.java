@@ -53,13 +53,13 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     private void execute() {
     	panelBody.add(new PanelTrangChuKH());
         ImageIcon iconBook = new ImageIcon(getClass().getResource("/img/book-search.png"));
-        ImageIcon iconCustomer = new ImageIcon(getClass().getResource("img/customer-icon.png"));
-        ImageIcon iconDatabase = new ImageIcon(getClass().getResource("img/bill-icon.png"));
-        ImageIcon iconThongKe= new ImageIcon(getClass().getResource("img/main-books-icon.png"));
-        ImageIcon iconMainPage = new ImageIcon(getClass().getResource("img/Help-icon.png"));
-        ImageIcon iconMessage = new ImageIcon(getClass().getResource("img/message.png"));
-        ImageIcon iconSubMenu = new ImageIcon(getClass().getResource("img/subMenu.png"));
-        ImageIcon iconNext = new ImageIcon(getClass().getResource("img/next.png"));
+        ImageIcon iconCustomer = new ImageIcon(getClass().getResource("/img/customer-icon.png"));
+        ImageIcon iconDatabase = new ImageIcon(getClass().getResource("/img/bill-icon.png"));
+        ImageIcon iconThongKe= new ImageIcon(getClass().getResource("/img/main-books-icon.png"));
+        ImageIcon iconMainPage = new ImageIcon(getClass().getResource("/img/Help-icon.png"));
+        ImageIcon iconMessage = new ImageIcon(getClass().getResource("/img/message.png"));
+        ImageIcon iconSubMenu = new ImageIcon(getClass().getResource("/img/subMenu.png"));
+        ImageIcon iconNext = new ImageIcon(getClass().getResource("/img/next.png"));
         //  create submenu staff
         
         MenuItem menuTimKiemSach = new MenuItem(iconSubMenu, "Tìm kiếm", new ActionListener() {
@@ -183,7 +183,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
         
         JLabel lblIconHeader = new JLabel("");
-        ImageIcon iconHeader = new ImageIcon(getClass().getResource("img/Books-2-icon.png"));
+        ImageIcon iconHeader = new ImageIcon(getClass().getResource("/img/Books-2-icon.png"));
         getContentPane().setLayout(null);
         lblIconHeader.setIcon(iconHeader);
 

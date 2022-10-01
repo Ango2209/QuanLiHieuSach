@@ -68,22 +68,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
         
-        MenuItem menuStaff2 = new MenuItem(iconSubMenu, "Đặt Mua",       new ActionListener() {
+        MenuItem menuStaff2 = new MenuItem(iconSubMenu, "Xem sách",       new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent ae) {
             	  switchPanel(new JPanelTest());
               }
           });
 
-        MenuItem menuStaff3 = new MenuItem(iconSubMenu, "Xem sách",  new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-          	  panelBody.removeAll();
-                panelBody.add( new Panel1());
-                panelBody.repaint();
-                panelBody.revalidate();
-            }
-        });
+//        MenuItem menuStaff3 = new MenuItem(iconSubMenu, "Xem sách",  new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//          	  panelBody.removeAll();
+//                panelBody.add( new Panel1());
+//                panelBody.repaint();
+//                panelBody.revalidate();
+//            }
+//        });
         //  create submenu setting message
 
         MenuItem message1 = new MenuItem(iconNext, "Message 001", null);
@@ -111,7 +111,7 @@ public class Main extends javax.swing.JFrame {
             	 switchPanel(new PanelTrangChuKH());
             }
         });
-        MenuItem menuStaff = new MenuItem(iconStaff, "Sách", null, menuStaff1, menuStaff2, menuStaff3);
+        MenuItem menuStaff = new MenuItem(iconStaff, "Sách", null, menuStaff1, menuStaff2);
         MenuItem menuSetting = new MenuItem(iconCart, "Phiếu Mua", null, menuSetting1, menuSetting3);
         MenuItem menuDatabase = new MenuItem(iconDatabase, "Trợ Giúp", new ActionListener() {
             @Override
