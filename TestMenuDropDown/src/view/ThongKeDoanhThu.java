@@ -179,7 +179,7 @@ public class ThongKeDoanhThu extends JPanel {
 		panel_3.setLayout(gl_panel_3);
 		
 		JButton btnNewButton_2 = new JButton("Thống kê");
-		btnNewButton_2.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/view/analytics.png")));
+		btnNewButton_2.setIcon(new ImageIcon(ThongKeDoanhThu.class.getResource("/img/analytics.png")));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(

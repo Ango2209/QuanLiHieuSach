@@ -116,7 +116,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         MenuItem tkDoanhSo = new MenuItem(iconNext, "Thống Kê Doanh số", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-            	
+            	switchPanel(new ThongKeDoanhSo());
             }
         });
         MenuItem hd1 = new MenuItem(iconNext, "Nhập Hóa Đơn", new ActionListener() {

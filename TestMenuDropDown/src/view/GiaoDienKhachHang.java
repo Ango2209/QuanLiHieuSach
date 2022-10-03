@@ -31,13 +31,13 @@ import javax.swing.JButton;
  *
  * @author RavenPC
  */
-public class Main extends javax.swing.JFrame {
+public class GiaoDienKhachHang extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
 	
-    public Main() {
+    public GiaoDienKhachHang() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -71,7 +71,7 @@ public class Main extends javax.swing.JFrame {
         MenuItem menuStaff2 = new MenuItem(iconSubMenu, "Xem sách",       new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent ae) {
-            	  switchPanel(new JPanelTest());
+            	  switchPanel(new PanelXemSach());
               }
           });
 
@@ -228,20 +228,20 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new GiaoDienKhachHang().setVisible(true);
             }
         });
     }
