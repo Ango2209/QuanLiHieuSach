@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelThanhToan extends JPanel {
 	private JTable table;
@@ -25,11 +27,15 @@ public class PanelThanhToan extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1252, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 730, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
 		JPanel panel_1 = new JPanel();
@@ -49,29 +55,33 @@ public class PanelThanhToan extends JPanel {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JButton btnNewButton_1 = new JButton("Hủy Toàn Bộ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_1.setBackground(new Color(176, 172, 213));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
-				.addComponent(panel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+				.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(75)
 					.addComponent(lblNewLabel_1)
-					.addGap(370)
+					.addGap(236)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-					.addGap(152)
+					.addGap(163)
 					.addComponent(btnNewButton_1)
-					.addContainerGap(172, Short.MAX_VALUE))
+					.addContainerGap(360, Short.MAX_VALUE))
+				.addComponent(panel_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(18)
@@ -81,8 +91,8 @@ public class PanelThanhToan extends JPanel {
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE))
+					.addGap(43)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 340, GroupLayout.PREFERRED_SIZE))
 		);
 		
 		table = new JTable();

@@ -137,13 +137,86 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             	switchPanel(new PanelTrangChuKH());
             }
         });
-        MenuItem menuSach = new MenuItem(iconBook, "Sách", null, menuTimKiemSach, menuCapNhatSach);
+        
+        
+        MenuItem menuStaff2 = new MenuItem(iconSubMenu, "Xem sách",       new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+          	  switchPanel(new PanelXemSach());
+            }
+        });
+        
+        MenuItem menuSach = new MenuItem(iconBook, "Sách", null, menuTimKiemSach, menuCapNhatSach,menuStaff2);
         MenuItem menuKhachHang = new MenuItem(iconCustomer, "Khách Hàng", null, menuTimKiemKH, menuCapNhatKH);
         MenuItem menuHoaDon = new MenuItem(iconDatabase, "Hóa Đơn", null,hd1,hd2);
         MenuItem menuThongKe = new MenuItem(iconThongKe, "Thống Kê", null,tkDoanhThu,tkDoanhSo);
-        addMenu(trangChu,menuSach, menuKhachHang, menuHoaDon,menuThongKe);
+        
+        ImageIcon iconStaff = new ImageIcon(getClass().getResource("/img/book-search.png"));
+        ImageIcon iconCart = new ImageIcon(getClass().getResource("/img/cart-icon.png"));
+        ImageIcon iconHelp = new ImageIcon(getClass().getResource("/img/Help-icon.png"));
+//        ImageIcon iconMessage = new ImageIcon(getClass().getResource("/img/message.png"));
+//        ImageIcon iconSubMenu = new ImageIcon(getClass().getResource("/img/subMenu.png"));
+//        ImageIcon iconNext = new ImageIcon(getClass().getResource("/img/next.png"));
+        //  create submenu staff
+        
+        MenuItem menuStaff1 = new MenuItem(iconSubMenu, "Tìm Kiếm", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	 switchPanel(new PanelTimKiem());
+            }
+        });
+        
+
+
+//        MenuItem menuStaff3 = new MenuItem(iconSubMenu, "Xem sách",  new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//          	  panelBody.removeAll();
+//                panelBody.add( new Panel1());
+//                panelBody.repaint();
+//                panelBody.revalidate();
+//            }
+//        });
+        //  create submenu setting message
+
+//        MenuItem message1 = new MenuItem(iconNext, "Message 001", null);
+//        MenuItem message2 = new MenuItem(iconNext, "Message 002", null);
+//        MenuItem message3 = new MenuItem(iconNext, "Message 003", null);
+
+        //  create submenu setting 
+        MenuItem menuSetting1 = new MenuItem(iconSubMenu, "Thanh Toán", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	switchPanel(new PanelThanhToan());
+            }
+        });
+        
+        MenuItem menuSetting3 = new MenuItem(iconSubMenu, "Lịch Sử Mua Hàng",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	 switchPanel(new PanelLichSu());
+            }
+        });
+//        MenuItem menuSetting4 = new MenuItem(iconSubMenu, "Setting 004", null);
+      
+   
+        MenuItem menuSetting = new MenuItem(iconCart, "Phiếu Mua", null, menuSetting1, menuSetting3);
+        MenuItem menuDatabase = new MenuItem(iconHelp, "Trợ Giúp", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            	 new troGiup().setVisible(true);
+            }
+        });
+      
+    
+
+
+        
+        addMenu(trangChu,menuSach, menuKhachHang, menuHoaDon,menuThongKe, menuSetting, menuDatabase);
     }
 
+    
+    
     private void addMenu(MenuItem... menu) {
         for (int i = 0; i < menu.length; i++) {
             menus.add(menu[i]);

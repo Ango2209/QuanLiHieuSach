@@ -52,7 +52,7 @@ public class PanelXemSach extends JPanel {
     	 gbc.gridy=y;
     	 PanelProduct.add(list[i],gbc);
     	 x++;
-    	 if(x==5) {
+    	 if(x==4) {
     		 x=0;
     		 y++;
     	 }

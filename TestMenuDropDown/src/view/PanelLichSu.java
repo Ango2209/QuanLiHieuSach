@@ -27,11 +27,13 @@ public class PanelLichSu extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1129, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
 		);
 		
 		JPanel panel_1 = new JPanel();
@@ -49,6 +51,10 @@ public class PanelLichSu extends JPanel {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JButton btnNewButton_1 = new JButton("Mua Thêm");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_1.setBackground(new Color(176, 172, 213));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
@@ -56,17 +62,19 @@ public class PanelLichSu extends JPanel {
 		lblNewLabel_1.setIcon(new ImageIcon("/img/File-History-icon.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(268, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(110, Short.MAX_VALUE)
 					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
-					.addGap(52)
+					.addGap(30)
 					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addGap(224)
+					.addGap(230)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
-					.addGap(226))
+					.addGap(400))
 				.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1127, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(56, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -74,6 +82,7 @@ public class PanelLichSu extends JPanel {
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(90)

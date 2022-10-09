@@ -75,7 +75,7 @@ public class PanelTimKiem extends JPanel {
 		panel_1.add(lblNewLabel_1_1_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 337, 1384, 436);
+		scrollPane.setBounds(0, 337, 1197, 436);
 		panel_1.add(scrollPane);
 		
 		table = new JTable();
