@@ -100,7 +100,7 @@ public class PanelLichSu extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				"Mã phiếu mua hàng", "Tên sản phẩm", "Số lượng", "Đơn giá"
 			}
 		));
 		scrollPane.setViewportView(table);

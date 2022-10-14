@@ -17,15 +17,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JTree;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class CapNhatSach extends JPanel {
 	private JTextField txtTenSach;
 	private JTextField txtDonGia;
 	private JTextField txtSoLuong;
-	private JTextField TxtTenNXB;
-	private JTextField txtTenTacGia;
-	private JTextField txtMaNXB;
-	private JTextField txtMaTacGia;
 	private JTable table;
 	private JTextField txtLoaiSach;
 
@@ -87,7 +84,7 @@ public class CapNhatSach extends JPanel {
 		lblNewLabel_1_2_1.setBounds(603, 60, 65, 23);
 		panel_2.add(lblNewLabel_1_2_1);
 		
-		JLabel lblNewLabel_1_2_2 = new JLabel("Tên NXB");
+		JLabel lblNewLabel_1_2_2 = new JLabel("NXB");
 		lblNewLabel_1_2_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1_2_2.setBounds(603, 94, 65, 23);
 		panel_2.add(lblNewLabel_1_2_2);
@@ -97,45 +94,23 @@ public class CapNhatSach extends JPanel {
 		txtSoLuong.setBounds(783, 62, 213, 23);
 		panel_2.add(txtSoLuong);
 		
-		TxtTenNXB = new JTextField();
-		TxtTenNXB.setColumns(10);
-		TxtTenNXB.setBounds(783, 94, 213, 23);
-		panel_2.add(TxtTenNXB);
-		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("Tên Tác Giả");
-		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1_1_1_1.setBounds(59, 94, 76, 23);
-		panel_2.add(lblNewLabel_1_1_1_1);
-		
-		txtTenTacGia = new JTextField();
-		txtTenTacGia.setColumns(10);
-		txtTenTacGia.setBounds(193, 96, 216, 23);
-		panel_2.add(txtTenTacGia);
-		
-		JLabel lblNewLabel_1_2_2_1 = new JLabel("Mã NXB");
-		lblNewLabel_1_2_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1_2_2_1.setBounds(603, 126, 65, 23);
-		panel_2.add(lblNewLabel_1_2_2_1);
-		
-		txtMaNXB = new JTextField();
-		txtMaNXB.setColumns(10);
-		txtMaNXB.setBounds(783, 128, 213, 23);
-		panel_2.add(txtMaNXB);
-		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Mã Tác Giả");
+		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Tác Giả");
 		lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1_1_1_1_1.setBounds(59, 128, 76, 23);
+		lblNewLabel_1_1_1_1_1.setBounds(59, 94, 76, 23);
 		panel_2.add(lblNewLabel_1_1_1_1_1);
-		
-		txtMaTacGia = new JTextField();
-		txtMaTacGia.setColumns(10);
-		txtMaTacGia.setBounds(193, 130, 216, 23);
-		panel_2.add(txtMaTacGia);
 		
 		txtLoaiSach = new JTextField();
 		txtLoaiSach.setColumns(10);
 		txtLoaiSach.setBounds(783, 28, 216, 23);
 		panel_2.add(txtLoaiSach);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(193, 96, 145, 22);
+		panel_2.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(783, 96, 189, 22);
+		panel_2.add(comboBox_1);
 		
 		JButton btnNewButton = new JButton("Thêm");
 		btnNewButton.addActionListener(new ActionListener() {

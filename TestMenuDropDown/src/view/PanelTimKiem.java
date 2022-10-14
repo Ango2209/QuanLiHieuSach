@@ -83,7 +83,7 @@ public class PanelTimKiem extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				"Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB","Số Lượng Đã Bán"
 			}
 		));
 		scrollPane.setViewportView(table);

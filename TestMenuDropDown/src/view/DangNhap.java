@@ -5,11 +5,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.TaiKhoan_DAO;
+import entity.TaiKhoan;
+
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -21,7 +33,9 @@ public class DangNhap extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtTaiKhoan;
 	private JPasswordField txtMatKhau;
-
+	private JButton btnDangNhap;
+	private ArrayList<TaiKhoan> lsTk;
+	private TaiKhoan_DAO tk_dao;
 	/**
 	 * Launch the application.
 	 */
@@ -42,6 +56,7 @@ public class DangNhap extends JFrame {
 	 * Create the frame.
 	 */
 	public DangNhap() {
+		tk_dao=new TaiKhoan_DAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 452);
 		contentPane = new JPanel();
@@ -80,7 +95,7 @@ public class DangNhap extends JFrame {
 		txtMatKhau.setBounds(138, 151, 274, 27);
 		contentPane.add(txtMatKhau);
 		
-		JButton btnDangNhap = new JButton("Đăng Nhập");
+		 btnDangNhap = new JButton("Đăng Nhập");
 		btnDangNhap.setBackground(new Color(0, 255, 0));
 		btnDangNhap.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnDangNhap.setBounds(169, 219, 130, 37);
@@ -92,13 +107,106 @@ public class DangNhap extends JFrame {
 		contentPane.add(chckbxNewCheckBox);
 		
 		JButton btnNewButton = new JButton("Đăng Ký");
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				DangKy gddk = new DangKy();
+				gddk.setVisible(true);
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton.setBounds(420, 219, 118, 37);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Quên Mật Khẩu");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				QuenMatKhau1 qmk1=new QuenMatKhau1();
+				qmk1.setVisible(true);
+			}
+		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.ITALIC, 15));
 		btnNewButton_1.setBounds(338, 321, 157, 23);
 		contentPane.add(btnNewButton_1);
+		
+		btnDangNhap.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent e) {
+				String userName = txtTaiKhoan.getText().trim();
+				char[] passWord = txtMatKhau.getPassword();
+				
+				String pass = String.valueOf(passWord);
+				if(userName.equals("")) {
+				
+					JOptionPane.showMessageDialog(null, "Nhập Vào Tên Đăng Nhập");
+				}else if(pass.equals("")) {
+					JOptionPane.showMessageDialog(null, "Nhập Vào Mật Khẩu");
+				}else if(ktraTaiKhoan()){
+					lsTk = new ArrayList<TaiKhoan>();
+					lsTk = tk_dao.getDsTaiKhoan();
+					int flag = 0;
+					String maKh="";
+					
+					for (TaiKhoan tk : lsTk) {
+						
+					
+					
+						if(tk.getTenTaiKhoan().trim().equalsIgnoreCase(userName) && tk.getMatKhau().trim().equalsIgnoreCase(pass)) {
+							
+							flag = 1;
+							if(tk.getLoaiTaiKhoan().equals("khachHang")) {
+								JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công");
+								dispose();
+								GiaoDienKhachHang gd = null;
+								gd = new GiaoDienKhachHang();
+								gd.setVisible(true);							
+							}if(chckbxNewCheckBox.isSelected()&&tk.getLoaiTaiKhoan().equals("NhanVien")) {
+								
+								JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công Dưới Quyền Nhân Viên");
+								dispose();
+								GiaoDienNhanVien gdNV = new GiaoDienNhanVien();
+								gdNV.setVisible(true);
+							}												
+						}
+					}
+					if(flag ==0) {
+						JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không đúng");
+					}
+				}
+			}
+			});
+	}
+			
+	private boolean ktraTaiKhoan() {
+		String userName = txtTaiKhoan.getText().trim();
+		char[] passWord = txtMatKhau.getPassword();
+		String pass = String.valueOf(passWord);
+		
+		if(!(userName.length()>0 && userName.matches("^[a-zA-Z0-9._-]{3,}"))) {
+			thongBao("Eror : Tên Đăng Nhập Theo Định dạng ^[a-zA-Z0-9._-]{3,}$", txtTaiKhoan);
+			return false;
+		}
+		
+		if(!(pass.length()>0 && pass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{6,32}$"))) {
+			thongBao("Eror : Mật Khẩu phải có từ 6-32 ký tự, bao gồm số chữ thường, chữ in và ký tự đặc biệt", txtMatKhau);
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+	public void thongBao(String er , JTextField txt) {
+		JOptionPane.showMessageDialog(null, er);
+		txt.selectAll();
+		txt.requestFocus();
 	}
 }
+

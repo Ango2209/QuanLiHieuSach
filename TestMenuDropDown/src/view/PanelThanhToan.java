@@ -100,7 +100,7 @@ public class PanelThanhToan extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
+					"Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -108,7 +108,7 @@ public class PanelThanhToan extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Tổng Tiền:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
-		JButton btnNewButton_2 = new JButton("Thanh Toán");
+		JButton btnNewButton_2 = new JButton("Đặt Hàng");
 		btnNewButton_2.setBackground(new Color(0, 255, 0));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -135,7 +135,7 @@ public class PanelThanhToan extends JPanel {
 		);
 		panel_2.setLayout(gl_panel_2);
 		
-		JLabel lblNewLabel = new JLabel("Thanh Toán");
+		JLabel lblNewLabel = new JLabel("Đặt Hàng");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
