@@ -2,7 +2,9 @@ package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -13,14 +15,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import dao.Sach_DAO;
+import entity.Sach;
+
 import java.awt.GridLayout;
 
 public class PanelXemSach extends JPanel {
-
+      private Sach_DAO sach_DAO;
+     
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
 	 */
-	public PanelXemSach() {
+	public PanelXemSach() throws SQLException {
+		sach_DAO =new Sach_DAO();
 		JScrollPane scrollPane = new JScrollPane();
 		JPanel PanelProduct=new JPanel();
 		PanelProduct.setLayout(new GridBagLayout());
@@ -41,16 +50,27 @@ public class PanelXemSach extends JPanel {
 		);
 		setLayout(groupLayout);
 		//     initComponents();
-     PanelBookItem[] list= {new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem(),new PanelBookItem()};
+		
+			ArrayList<Sach> dsSach=sach_DAO.getAllSach();
+		
+		ArrayList <PanelBookItem> list=new ArrayList<>();
+		
+			for(Sach sach :dsSach) {
+				list.add(new PanelBookItem(sach));
+			}
+				
+     
+    
      GridBagConstraints gbc=new GridBagConstraints();
      gbc.insets=new Insets(20, 20, 20, 20);
      
+     
      int x=0;
      int y=0;
-     for (int i=0;i<list.length;i++) {
+     for (PanelBookItem item :list) {
     	 gbc.gridx=x;
     	 gbc.gridy=y;
-    	 PanelProduct.add(list[i],gbc);
+    	 PanelProduct.add(item,gbc);
     	 x++;
     	 if(x==4) {
     		 x=0;

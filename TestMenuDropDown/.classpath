@@ -11,5 +11,26 @@
 	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/testdoan/testdoan/libs/sqljdbc42.jar"/>
 	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/javax.activation-1.2.0.jar"/>
 	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-compress-1.21.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-io-2.11.0.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/curvesapi-1.07.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/jakarta.activation-2.0.1.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/jakarta.xml.bind-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/log4j-api-2.18.0.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-examples-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-excelant-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-javadoc-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-ooxml-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-ooxml-full-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-ooxml-lite-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/poi-scratchpad-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/SparseBitSet-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/Homeworks/OOP/20115331_NguyenVanNgo/TestReadExcel/lib/xmlbeans-5.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

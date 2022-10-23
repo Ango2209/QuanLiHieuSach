@@ -10,12 +10,13 @@ public class NhanVien {
   private String diaChi;
   private int sdtNhanVien;
   private String email;
+  private String tenTaiKhoan;
 public NhanVien() {
 	super();
 	// TODO Auto-generated constructor stub
 }
 public NhanVien(String maNhanVien, String tenNhanVien, LocalDate ngaySinh, String gioiTinh, String diaChi,
-		int sdtNhanVien, String email) {
+		int sdtNhanVien, String email, String tenTaiKhoan) {
 	super();
 	this.maNhanVien = maNhanVien;
 	this.tenNhanVien = tenNhanVien;
@@ -24,12 +25,7 @@ public NhanVien(String maNhanVien, String tenNhanVien, LocalDate ngaySinh, Strin
 	this.diaChi = diaChi;
 	this.sdtNhanVien = sdtNhanVien;
 	this.email = email;
-}
-@Override
-public String toString() {
-	return "NhanVien [maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", ngaySinh=" + ngaySinh
-			+ ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", sdtNhanVien=" + sdtNhanVien + ", email=" + email
-			+ "]";
+	this.tenTaiKhoan = tenTaiKhoan;
 }
 public String getMaNhanVien() {
 	return maNhanVien;
@@ -73,5 +69,12 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+public String getTenTaiKhoan() {
+	return tenTaiKhoan;
+}
+public void setTenTaiKhoan(String tenTaiKhoan) {
+	this.tenTaiKhoan = tenTaiKhoan;
+}
+
   
 }

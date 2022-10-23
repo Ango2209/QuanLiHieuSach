@@ -3,7 +3,7 @@ package entity;
 import java.time.LocalDate;
 
 public class PhieuMuaHang {
- private String maCTPhieuMh;
+ private String maPhieuMh;
  private String maKhachHang;
  private String maNhanVien;
  private LocalDate ngayLapPhieu;
@@ -11,24 +11,24 @@ public class PhieuMuaHang {
 public PhieuMuaHang() {
 	super();
 	// TODO Auto-generated constructor stub
-}
-public PhieuMuaHang(String maCTPhieuMh, String maKhachHang, String maNhanVien, LocalDate ngayLapPhieu) {
+} 
+public PhieuMuaHang(String maPhieuMh, String maKhachHang, String maNhanVien, LocalDate ngayLapPhieu) {
 	super();
-	this.maCTPhieuMh = maCTPhieuMh;
+	this.maPhieuMh = maPhieuMh;
 	this.maKhachHang = maKhachHang;
 	this.maNhanVien = maNhanVien;
 	this.ngayLapPhieu = ngayLapPhieu;
 }
 @Override
 public String toString() {
-	return "PhieuMuaHang [ctPhieuMh=" + maCTPhieuMh + ", maKhachHang=" + maKhachHang + ", maNhanVien=" + maNhanVien
+	return "PhieuMuaHang [ctPhieuMh=" + maPhieuMh + ", maKhachHang=" + maKhachHang + ", maNhanVien=" + maNhanVien
 			+ ", ngayLapPhieu=" + ngayLapPhieu + "]";
 }
-public String getCtPhieuMh() {
-	return maCTPhieuMh;
+public String getMaPhieuMh() {
+	return maPhieuMh;
 }
-public void setCtPhieuMh(String ctPhieuMh) {
-	this.maCTPhieuMh = ctPhieuMh;
+public void setMaPhieuMh(String ctPhieuMh) {
+	this.maPhieuMh = maPhieuMh;
 }
 public String getMaKhachHang() {
 	return maKhachHang;

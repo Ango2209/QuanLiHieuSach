@@ -1,32 +1,33 @@
 package entity;
 
 public class ChiTietPhieuMuaHang {
-  private PhieuMuaHang phieuMuaHang;
+  private String maPhieuMuaHang;
   private String maSach;
   private int soLuong;
-  private float tongTien;
+  private double tongTien;
   
 public ChiTietPhieuMuaHang() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public ChiTietPhieuMuaHang(PhieuMuaHang phieuMuaHang, String maSach, int soLuong, float tongTien) {
+public ChiTietPhieuMuaHang(String maphieuMuaHang, String maSach, int soLuong, double tongTien) {
 	super();
-	this.phieuMuaHang = phieuMuaHang;
+	this.maPhieuMuaHang = maPhieuMuaHang;
 	this.maSach = maSach;
 	this.soLuong = soLuong;
 	this.tongTien = tongTien;
 }
 @Override
 public String toString() {
-	return "ChiTietPhieuMuaHang [phieuMuaHang=" + phieuMuaHang + ", sach=" + maSach + ", soLuong=" + soLuong
+	return "ChiTietPhieuMuaHang [phieuMuaHang=" + maPhieuMuaHang + ", sach=" + maSach + ", soLuong=" + soLuong
 			+ ", tongTien=" + tongTien + "]";
 }
-public PhieuMuaHang getPhieuMuaHang() {
-	return phieuMuaHang;
+public String getMaPhieuMuaHang() {
+	return maPhieuMuaHang;
 }
-public void setPhieuMuaHang(PhieuMuaHang phieuMuaHang) {
-	this.phieuMuaHang = phieuMuaHang;
+
+public void setMaPhieuMuaHang(String maPhieuMuaHang) {
+	this.maPhieuMuaHang = maPhieuMuaHang;
 }
 public String getMaSach() {
 	return maSach;
@@ -40,10 +41,10 @@ public int getSoLuong() {
 public void setSoLuong(int soLuong) {
 	this.soLuong = soLuong;
 }
-public float getTongTien() {
+public double getTongTien() {
 	return tongTien;
 }
-public void setTongTien(float tongTien) {
+public void setTongTien(double tongTien) {
 	this.tongTien = tongTien;
 }
   

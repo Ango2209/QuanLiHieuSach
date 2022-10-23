@@ -119,5 +119,10 @@ public class QuenMatKhau2 extends JFrame {
 		txtXacNhanMatKhauMoi = new JPasswordField();
 		txtXacNhanMatKhauMoi.setBounds(168, 172, 270, 28);
 		contentPane.add(txtXacNhanMatKhauMoi);
+		
+		JButton btnNewButton = new JButton("Quay Lại");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.setBounds(0, 53, 113, 31);
+		contentPane.add(btnNewButton);
 	}
 }

@@ -77,7 +77,7 @@ public class QuenMatKhau1 extends JFrame {
 		
         tk_dao=new TaiKhoan_DAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 670, 342);
+		setBounds(100, 100, 712, 386);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -86,7 +86,7 @@ public class QuenMatKhau1 extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(128, 128, 255));
-		panel.setBounds(0, 0, 644, 43);
+		panel.setBounds(0, 0, 696, 43);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -97,22 +97,22 @@ public class QuenMatKhau1 extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Vui lòng nhập mã xác thực ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(23, 156, 202, 26);
+		lblNewLabel.setBounds(23, 172, 202, 26);
 		contentPane.add(lblNewLabel);
 		
 		txtNhapMaXacThuc = new JTextField();
-		txtNhapMaXacThuc.setBounds(23, 182, 316, 26);
+		txtNhapMaXacThuc.setBounds(23, 209, 316, 26);
 		contentPane.add(txtNhapMaXacThuc);
 		txtNhapMaXacThuc.setColumns(10);
 		
 		txtNhapEmail = new JTextField();
 		txtNhapEmail.setColumns(10);
-		txtNhapEmail.setBounds(23, 104, 316, 26);
+		txtNhapEmail.setBounds(23, 135, 316, 26);
 		contentPane.add(txtNhapEmail);
 		
 		JLabel lblNhpEmail = new JLabel("Nhập email");
 		lblNhpEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNhpEmail.setBounds(23, 77, 202, 26);
+		lblNhpEmail.setBounds(23, 98, 202, 26);
 		contentPane.add(lblNhpEmail);
 		
 		JButton btnLayMa = new JButton("Lấy mã");
@@ -147,7 +147,7 @@ public class QuenMatKhau1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLayMa.setBounds(385, 104, 108, 32);
+		btnLayMa.setBounds(391, 130, 108, 32);
 		contentPane.add(btnLayMa);
 		
 		JButton btnXacNhan = new JButton("Xác nhận");
@@ -173,8 +173,13 @@ public class QuenMatKhau1 extends JFrame {
 		
 		btnXacNhan.setBackground(new Color(0, 255, 0));
 		btnXacNhan.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnXacNhan.setBounds(236, 237, 123, 36);
+		btnXacNhan.setBounds(295, 265, 123, 36);
 		contentPane.add(btnXacNhan);
+		
+		JButton btnNewButton = new JButton("Quay Lại");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setBounds(10, 45, 123, 36);
+		contentPane.add(btnNewButton);
 	}
 	public void guiMa() {
 		maXacThuc="12345";

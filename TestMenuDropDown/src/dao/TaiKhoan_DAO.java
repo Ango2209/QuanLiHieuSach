@@ -36,6 +36,7 @@ public class TaiKhoan_DAO {
 		}
 		return lsTaiKhoan;
 	}
+	
 	public boolean addTK(TaiKhoan tk) throws SQLException {
 		ConnectDB.getInstance();
 		Connection con = ConnectDB.getConnection();

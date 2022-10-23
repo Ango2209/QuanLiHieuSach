@@ -12,7 +12,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import dao.ChiTietPhieuMua_DAO;
+import dao.Sach_DAO;
+import entity.ChiTietPhieuMuaHang;
+import entity.Sach;
+import entity.TacGia;
+
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PanelThanhToan extends JPanel {
@@ -21,8 +30,12 @@ public class PanelThanhToan extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	private ChiTietPhieuMua_DAO ctPMH_DAO;
+   private Sach_DAO sach_DAO;
+	private DefaultTableModel tableModel;
 	public PanelThanhToan() {
-		
+		ctPMH_DAO=new ChiTietPhieuMua_DAO();
+		sach_DAO=new Sach_DAO();
 		JPanel panel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -96,13 +109,15 @@ public class PanelThanhToan extends JPanel {
 		);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-					"Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB"
-			}
-		));
+		tableModel=new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB"
+				}
+			);
+		table.setModel(tableModel);
+		
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_2 = new JLabel("Tổng Tiền:");
@@ -154,4 +169,19 @@ public class PanelThanhToan extends JPanel {
 		setLayout(groupLayout);
 
 	}
+	public void loadDatHang() throws SQLException {
+		while (table.getRowCount() != 0) {
+			tableModel.removeRow(0);
+		}
+	ArrayList<ChiTietPhieuMuaHang> dsPhieuMua = new ArrayList<>();
+	ArrayList<Sach> dsSach=new ArrayList<>();
+	for (ChiTietPhieuMuaHang k : dsPhieuMua) {
+         for(Sach s:dsSach) {
+        	 if(s.getMaSach()==k.getMaSach()) {
+        		 tableModel.addRow(new Object []{s.getMaSach(),s.getTenSach(),k.getTongTien(),s.getNhaXB(),s.getTenLoaiSach(),k.getSoLuong(),s.getNhaXB()});
+        	 }
+         }
+	}
+	}
+	
 }

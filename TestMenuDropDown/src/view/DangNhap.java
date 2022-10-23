@@ -6,7 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dao.KhachHang_DAO;
+import dao.NhanVien_DAO;
 import dao.TaiKhoan_DAO;
+import entity.KhachHang;
+import entity.NguoiDangNhap;
+import entity.NhanVien;
 import entity.TaiKhoan;
 
 
@@ -20,6 +25,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
@@ -36,6 +42,9 @@ public class DangNhap extends JFrame {
 	private JButton btnDangNhap;
 	private ArrayList<TaiKhoan> lsTk;
 	private TaiKhoan_DAO tk_dao;
+	private NguoiDangNhap nDN;
+	private NhanVien_DAO nv_DAO;
+	private KhachHang_DAO kh_DAO;
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +65,10 @@ public class DangNhap extends JFrame {
 	 * Create the frame.
 	 */
 	public DangNhap() {
+		
 		tk_dao=new TaiKhoan_DAO();
+		nv_DAO=new NhanVien_DAO();
+		kh_DAO=new KhachHang_DAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 452);
 		contentPane = new JPanel();
@@ -165,12 +177,37 @@ public class DangNhap extends JFrame {
 								JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công");
 								dispose();
 								GiaoDienKhachHang gd = null;
+								ArrayList<KhachHang> kh= new ArrayList<>();
+								try {
+									kh=kh_DAO.getAllKH();
+								} catch (SQLException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								for(KhachHang k : kh) {
+									if(k.getTenTaiKhoan()==tk.getTenTaiKhoan()) {
+										nDN=new NguoiDangNhap(tk.getTenTaiKhoan(),k.getMaKhachHang(),k.getTenKhachHang());
+									}
+								}
+
 								gd = new GiaoDienKhachHang();
 								gd.setVisible(true);							
 							}if(chckbxNewCheckBox.isSelected()&&tk.getLoaiTaiKhoan().equals("NhanVien")) {
 								
 								JOptionPane.showMessageDialog(null, "Đăng Nhập Thành Công Dưới Quyền Nhân Viên");
 								dispose();
+								ArrayList<NhanVien> nv=new ArrayList<>();
+								try {
+									nv=nv_DAO.getAllNV();
+								} catch (SQLException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								for(NhanVien n:nv) {
+									if(n.getTenTaiKhoan()==tk.getTenTaiKhoan()) {
+										nDN=new NguoiDangNhap(n.getTenTaiKhoan(), n.getMaNhanVien(), n.getTenNhanVien());
+									}
+								}
 								GiaoDienNhanVien gdNV = new GiaoDienNhanVien();
 								gdNV.setVisible(true);
 							}												

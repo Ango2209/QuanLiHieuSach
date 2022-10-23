@@ -5,17 +5,13 @@ public class Sach {
   private String maNhaXB;
   private String maTacGia;
   private String tenSach;
-  private float donGia;
+  private double donGia;
   private String tenLoaiSach;
-  private float soLuong;
+  private int soLuong;
+  private int soLuongDaBan;
   
-  
-public Sach() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-public Sach(String maSach, String maNhaXB, String maTacGia, String tenSach, float donGia, String tenLoaiSach,
-		float soLuong) {
+public Sach(String maSach, String maNhaXB, String maTacGia, String tenSach, double donGia, String tenLoaiSach,
+		int soLuong, int soLuongDaBan) {
 	super();
 	this.maSach = maSach;
 	this.maNhaXB = maNhaXB;
@@ -24,6 +20,18 @@ public Sach(String maSach, String maNhaXB, String maTacGia, String tenSach, floa
 	this.donGia = donGia;
 	this.tenLoaiSach = tenLoaiSach;
 	this.soLuong = soLuong;
+	this.soLuongDaBan = soLuongDaBan;
+}
+public Sach() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public int getSoLuongDaBan() {
+	return soLuongDaBan;
+}
+public void setSoLuongDaBan(int soLuongDaBan) {
+	this.soLuongDaBan = soLuongDaBan;
 }
 @Override
 public String toString() {
@@ -54,10 +62,10 @@ public String getTenSach() {
 public void setTenSach(String tenSach) {
 	this.tenSach = tenSach;
 }
-public float getDonGia() {
+public double getDonGia() {
 	return donGia;
 }
-public void setDonGia(float donGia) {
+public void setDonGia(double donGia) {
 	this.donGia = donGia;
 }
 public String getTenLoaiSach() {
@@ -66,10 +74,10 @@ public String getTenLoaiSach() {
 public void setTenLoaiSach(String tenLoaiSach) {
 	this.tenLoaiSach = tenLoaiSach;
 }
-public float getSoLuong() {
+public int getSoLuong() {
 	return soLuong;
 }
-public void setSoLuong(float soLuong) {
+public void setSoLuong(int soLuong) {
 	this.soLuong = soLuong;
 }
   

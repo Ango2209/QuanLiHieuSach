@@ -6,23 +6,24 @@ public class KhachHang {
  private int sdtKhachHang;
  private String email;
  private String gioiTinh;
+ private String tenTaiKhoan;
+ 
 public KhachHang() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public KhachHang(String maKhachHang, String tenKhachHang, int sdtKhachHang, String email, String gioiTinh) {
+
+public KhachHang(String maKhachHang, String tenKhachHang, int sdtKhachHang, String email, String gioiTinh,
+		String tenTaiKhoan) {
 	super();
 	this.maKhachHang = maKhachHang;
 	this.tenKhachHang = tenKhachHang;
 	this.sdtKhachHang = sdtKhachHang;
 	this.email = email;
 	this.gioiTinh = gioiTinh;
+	this.tenTaiKhoan = tenTaiKhoan;
 }
-@Override
-public String toString() {
-	return "KhachHang [maKhachHang=" + maKhachHang + ", tenKhachHang=" + tenKhachHang + ", sdtKhachHang=" + sdtKhachHang
-			+ ", email=" + email + ", gioiTinh=" + gioiTinh + "]";
-}
+
 public String getMaKhachHang() {
 	return maKhachHang;
 }
@@ -53,4 +54,11 @@ public String getGioiTinh() {
 public void setGioiTinh(String gioiTinh) {
 	this.gioiTinh = gioiTinh;
 }
+public String getTenTaiKhoan() {
+	return tenTaiKhoan;
+}
+public void setTenTaiKhoan(String tenTaiKhoan) {
+	this.tenTaiKhoan = tenTaiKhoan;
+}
+
 }

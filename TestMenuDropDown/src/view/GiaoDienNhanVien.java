@@ -10,6 +10,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,6 +25,9 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import entity.TaiKhoan;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
@@ -36,7 +40,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-	
+	 private static String maTaiKhoanDangNhap;
     public GiaoDienNhanVien() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -47,9 +51,9 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     	panelBody.removeAll();
     	panelBody.add(panel);
     	panelBody.repaint();
-    	panelBody.revalidate();
-		
+    	panelBody.revalidate();		
 	}
+    
     private void execute() {
     	panelBody.add(new PanelTrangChuKH());
         ImageIcon iconBook = new ImageIcon(getClass().getResource("/img/book-search.png"));
@@ -62,13 +66,25 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         ImageIcon iconNext = new ImageIcon(getClass().getResource("/img/next.png"));
         //  create submenu staff
         
+        MenuItem menuTacGia = new MenuItem(iconSubMenu, "Tác Giả", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            switchPanel(new panelTacGia());
+            }
+        });   
+        MenuItem menuNXB = new MenuItem(iconSubMenu, "Nhà Xuất Bản", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            switchPanel(new panelNhaXuatBan());
+            }
+        });
         MenuItem menuTimKiemSach = new MenuItem(iconSubMenu, "Tìm kiếm", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
             switchPanel(new PanelTimKiem());
             }
         });
-        
+       
         MenuItem menuCapNhatSach = new MenuItem(iconSubMenu, "Cập nhật",       new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent ae) {
@@ -86,7 +102,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
         //  create submenu setting message
-
+       
         MenuItem message1 = new MenuItem(iconNext, "Message 001", null);
         MenuItem message2 = new MenuItem(iconNext, "Message 002", null);
         MenuItem message3 = new MenuItem(iconNext, "Message 003", null);
@@ -142,11 +158,16 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         MenuItem menuStaff2 = new MenuItem(iconSubMenu, "Xem sách",       new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-          	  switchPanel(new PanelXemSach());
+          	  try {
+				switchPanel(new PanelXemSach());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             }
         });
         
-        MenuItem menuSach = new MenuItem(iconBook, "Sách", null, menuTimKiemSach, menuCapNhatSach,menuStaff2);
+        MenuItem menuSach = new MenuItem(iconBook, "Sách", null,menuTacGia,menuNXB, menuTimKiemSach, menuCapNhatSach,menuStaff2);
         MenuItem menuKhachHang = new MenuItem(iconCustomer, "Khách Hàng", null, menuTimKiemKH, menuCapNhatKH);
         MenuItem menuHoaDon = new MenuItem(iconDatabase, "Hóa Đơn", null,hd1,hd2);
         MenuItem menuThongKe = new MenuItem(iconThongKe, "Thống Kê", null,tkDoanhThu,tkDoanhSo);
@@ -200,7 +221,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
 //        MenuItem menuSetting4 = new MenuItem(iconSubMenu, "Setting 004", null);
       
    
-        MenuItem menuSetting = new MenuItem(iconCart, "Phiếu Mua", null, menuSetting1, menuSetting3);
+        MenuItem menuSetting = new MenuItem(iconCart, "Đặt Hàng", null, menuSetting1, menuSetting3);
         MenuItem menuDatabase = new MenuItem(iconHelp, "Trợ Giúp", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

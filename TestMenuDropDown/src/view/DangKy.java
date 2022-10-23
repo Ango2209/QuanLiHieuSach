@@ -60,7 +60,7 @@ public class DangKy extends JFrame {
 	public DangKy() {
 		tk_dao = new TaiKhoan_DAO();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 567, 459);
+		setBounds(100, 100, 693, 527);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -69,40 +69,40 @@ public class DangKy extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Tên Tài Khoản");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(110, 46, 96, 13);
+		lblNewLabel_1.setBounds(213, 53, 96, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		txtTenTaiKhoan = new JTextField();
-		txtTenTaiKhoan.setBounds(110, 64, 308, 30);
+		txtTenTaiKhoan.setBounds(201, 77, 308, 30);
 		contentPane.add(txtTenTaiKhoan);
 		txtTenTaiKhoan.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(110, 118, 308, 30);
+		txtEmail.setBounds(201, 142, 308, 30);
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Mật Khẩu");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(110, 158, 86, 25);
+		lblNewLabel_2.setBounds(211, 174, 86, 25);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Email");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(110, 104, 45, 13);
+		lblNewLabel_3.setBounds(211, 118, 45, 13);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nhập Lại Mật Khẩu");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_4.setBounds(110, 224, 161, 25);
+		lblNewLabel_4.setBounds(211, 235, 161, 25);
 		contentPane.add(lblNewLabel_4);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(110, 184, 308, 30);
+		txtPassword.setBounds(201, 199, 308, 30);
 		contentPane.add(txtPassword);
 		
 		txtNhapLaiMatKhau = new JPasswordField();
-		txtNhapLaiMatKhau.setBounds(110, 247, 308, 32);
+		txtNhapLaiMatKhau.setBounds(201, 265, 308, 32);
 		contentPane.add(txtNhapLaiMatKhau);
 		
 	  btnDangKy = new JButton("Đăng Ký");
@@ -158,24 +158,29 @@ public class DangKy extends JFrame {
 		});
 		btnDangKy.setBackground(new Color(0, 255, 0));
 		btnDangKy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnDangKy.setBounds(234, 325, 121, 34);
+		btnDangKy.setBounds(297, 366, 121, 34);
 		contentPane.add(btnDangKy);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(128, 128, 255));
-		panel.setBounds(0, 0, 553, 36);
+		panel.setBounds(0, 0, 677, 36);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("ĐĂNG KÝ");
-		lblNewLabel.setBounds(38, 0, 110, 35);
+		lblNewLabel.setBounds(27, 0, 110, 35);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		 checkNhanVien = new JCheckBox("Nhân Viên");
 		checkNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkNhanVien.setBounds(109, 304, 97, 23);
+		checkNhanVien.setBounds(195, 323, 97, 23);
 		contentPane.add(checkNhanVien);
+		
+		JButton btnNewButton = new JButton("Quay Lại");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setBounds(0, 43, 121, 32);
+		contentPane.add(btnNewButton);
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		Object o = arg0.getSource();
