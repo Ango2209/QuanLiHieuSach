@@ -121,6 +121,12 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
           	switchPanel(new CapNhatKhachHang());
             }
         });
+        MenuItem menuCapNhatNV = new MenuItem(iconSubMenu, "Cập nhật",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+          	switchPanel(new CapNhatNhanVien());
+            }
+        });
 //        MenuItem menuKhachHang4 = new MenuItem(iconSubMenu, "", null);
         MenuItem tkDoanhThu = new MenuItem(iconNext, "Thống Kê Doanh Thu", new ActionListener() {
             @Override
@@ -168,7 +174,8 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         });
         
         MenuItem menuSach = new MenuItem(iconBook, "Sách", null,menuTacGia,menuNXB, menuTimKiemSach, menuCapNhatSach,menuStaff2);
-        MenuItem menuKhachHang = new MenuItem(iconCustomer, "Khách Hàng", null, menuTimKiemKH, menuCapNhatKH);
+        MenuItem menuKhachHang = new MenuItem(iconCustomer, "Khách Hàng", null, menuTimKiemKH, menuCapNhatNV);
+        MenuItem menuNhanVien = new MenuItem(iconCustomer, "Nhân Viên", null, menuCapNhatNV);
         MenuItem menuHoaDon = new MenuItem(iconDatabase, "Hóa Đơn", null,hd1,hd2);
         MenuItem menuThongKe = new MenuItem(iconThongKe, "Thống Kê", null,tkDoanhThu,tkDoanhSo);
         
@@ -238,7 +245,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
 
 
         
-        addMenu(trangChu,menuSach, menuKhachHang, menuHoaDon,menuThongKe, menuSetting, menuDatabase);
+        addMenu(trangChu,menuSach, menuKhachHang,menuNhanVien, menuHoaDon,menuThongKe, menuSetting, menuDatabase);
     }
 
     
