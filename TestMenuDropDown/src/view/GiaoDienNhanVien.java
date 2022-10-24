@@ -40,7 +40,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-	 private static String maTaiKhoanDangNhap;
+	
     public GiaoDienNhanVien() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -208,7 +208,12 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         MenuItem menuSetting1 = new MenuItem(iconSubMenu, "Thanh Toán", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-            	switchPanel(new PanelThanhToan());
+            	try {
+					switchPanel(new PanelDatHang());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         
@@ -365,7 +370,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel menus;
-    private javax.swing.JPanel panelBody;
+    protected javax.swing.JPanel panelBody;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelMenu;
 }

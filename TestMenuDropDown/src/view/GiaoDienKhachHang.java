@@ -94,7 +94,7 @@ public class GiaoDienKhachHang extends javax.swing.JFrame {
         MenuItem menuSetting1 = new MenuItem(iconSubMenu, "Thanh Toán", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-            	switchPanel(new PanelThanhToan());
+            	switchPanel(new PanelDatHang());
             }
         });
         

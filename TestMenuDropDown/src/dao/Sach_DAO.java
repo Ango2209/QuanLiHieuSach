@@ -9,6 +9,7 @@ import java.util.List;
 
 import connectDB.ConnectDB;
 import entity.KhachHang;
+import entity.NhaXuatBan;
 import entity.Sach;
 import entity.TacGia;
 
@@ -152,7 +153,7 @@ public String getMaxID() throws SQLException {
 			stmt = con.prepareStatement("insert into" + " Sach values(?,?,?,?,?,?,?,?)");
 			stmt.setString(1,sach.getMaSach() );
 			stmt.setString(2, sach.getNhaXB());
-			stmt.setString(3, sach.getTacGia());
+			stmt.setString(3, sach.getMaTacGia());
 			stmt.setString(4, sach.getTenSach());
 			stmt.setDouble(5, sach.getDonGia());
 			stmt.setString(6, sach.getTenLoaiSach());
@@ -170,5 +171,31 @@ public String getMaxID() throws SQLException {
 			}
 		}
 		return n>0;
+	}
+	public Sach getSachTheoMaSach(String maS){
+//		ArrayList<Sach> dsSach = new ArrayList<Sach>();
+		Sach s= null;
+		try {
+			ConnectDB.getInstance();
+			Connection con = ConnectDB.getConnection();
+			PreparedStatement stmt = null;
+			String sql ="SELECT  Sach.maSach ,Sach.tenSach , TacGia.tenTacGia,NhaXuatBan.tenNhaXuatBan ,Sach.tenLoaiSach,Sach.soLuong,Sach.donGia FROM Sach INNER JOIN TacGia ON Sach.maTacGia=TacGia.maTacGia INNER JOIN NhaXuatBan ON Sach.maNhaXuatBan = NhaXuatBan.maNhaXuatBan where maSach = ? ";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, maS);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next() ) {
+				String maSach = rs.getString(1);
+				String tenSach = rs.getString(2);
+				String tenTacGia= rs.getString(3);
+				String tenNhaXuatBan =rs.getString(4);
+				String tenLoaiSach = rs.getString(5);
+				int soLuong= rs.getInt(6);
+				Double donGia = rs.getDouble(7);
+				s = new Sach(maSach, tenSach, donGia, tenLoaiSach, soLuong, new NhaXuatBan(tenNhaXuatBan), new TacGia(tenTacGia));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return s;
 	}
 }

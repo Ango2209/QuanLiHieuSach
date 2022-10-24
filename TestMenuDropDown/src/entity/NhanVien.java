@@ -75,6 +75,15 @@ public String getTenTaiKhoan() {
 public void setTenTaiKhoan(String tenTaiKhoan) {
 	this.tenTaiKhoan = tenTaiKhoan;
 }
+public NhanVien(String tenNhanVien) {
+	super();
+	this.tenNhanVien = tenNhanVien;
+}
+public NhanVien(String maNhanVien, String tenNhanVien) {
+	super();
+	this.maNhanVien = maNhanVien;
+	this.tenNhanVien = tenNhanVien;
+}
 
   
 }

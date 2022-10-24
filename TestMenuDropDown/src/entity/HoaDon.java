@@ -1,53 +1,103 @@
 package entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class HoaDon {
-    private ChiTietHoaDon ctHoaDon;
-    private String maKhachHang;
+	private String maHoaDon;
+    private KhachHang khachHang;
     private NhanVien nhanVien;
-    private LocalDate ngayLapHD;
+    private LocalDate ngayLapHoaDon;
+    private ChiTietHoaDon ctHoaDon;
     
 	public HoaDon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public HoaDon(ChiTietHoaDon ctHoaDon, String maKhachHang, NhanVien nhanVien, LocalDate ngayLapHD) {
-		super();
-		this.ctHoaDon = ctHoaDon;
-		this.maKhachHang = maKhachHang;
-		this.nhanVien = nhanVien;
-		this.ngayLapHD = ngayLapHD;
-	}
+
 	public ChiTietHoaDon getCtHoaDon() {
 		return ctHoaDon;
 	}
 	public void setCtHoaDon(ChiTietHoaDon ctHoaDon) {
 		this.ctHoaDon = ctHoaDon;
 	}
-	public String getMaKhachHang() {
-		return maKhachHang;
-	}
-	public void setMaKhachHang(String maKhachHang) {
-		this.maKhachHang = maKhachHang;
-	}
+
+
 	public NhanVien getNhanVien() {
 		return nhanVien;
 	}
 	public void setNhanVien(NhanVien nhanVien) {
 		this.nhanVien = nhanVien;
 	}
-	public LocalDate getNgayLapHD() {
-		return ngayLapHD;
+
+
+	public KhachHang getKhachHang() {
+		return khachHang;
 	}
-	public void setNgayLapHD(LocalDate ngayLapHD) {
-		this.ngayLapHD = ngayLapHD;
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
 	}
+
+
+	public String getMaHoaDon() {
+		return maHoaDon;
+	}
+
+	public void setMaHoaDon(String maHoaDon) {
+		this.maHoaDon = maHoaDon;
+	}
+
+
+	public LocalDate getNgayLapHoaDon() {
+		return ngayLapHoaDon;
+	}
+
+	public void setNgayLapHoaDon(LocalDate ngayLapHoaDon) {
+		this.ngayLapHoaDon = ngayLapHoaDon;
+	}
+
+	public HoaDon(String maHoaDon, KhachHang khachHang, NhanVien nhanVien, LocalDate ngayLapHoaDon) {
+		super();
+		this.maHoaDon = maHoaDon;
+		this.khachHang = khachHang;
+		this.nhanVien = nhanVien;
+		this.ngayLapHoaDon = ngayLapHoaDon;
+	}
+
+	
+	
+	
 	@Override
 	public String toString() {
-		return "HoaDon [ctHoaDon=" + ctHoaDon + ", khachHang=" + maKhachHang + ", nhanVien=" + nhanVien + ", ngayLapHD="
-				+ ngayLapHD + "]";
+		return "HoaDon [maHoaDon=" + maHoaDon + ",  khachHang=" + khachHang.getTenKhachHang() +", khachHang ="+ khachHang.getSdtKhachHang() + ", nhanVien="
+				+ nhanVien.getTenNhanVien() + ", ngayLapHoaDon=" + ngayLapHoaDon + "]";
 	}
+
+public HoaDon(String maHoaDon, KhachHang khachHang, NhanVien nhanVien, LocalDate ngayLapHoaDon, ChiTietHoaDon ctHoaDon) {
+	super();
+	this.maHoaDon = maHoaDon;
+	this.khachHang = khachHang;
+	this.nhanVien = nhanVien;
+	this.ngayLapHoaDon = ngayLapHoaDon;
+	this.ctHoaDon = ctHoaDon;
+}
+
+public HoaDon(String maHoaDon) {
+	super();
+	this.maHoaDon = maHoaDon;
+}
+
+
+	
+	
+
+
+
+
+
+	
+	
     
     
 }

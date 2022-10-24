@@ -105,6 +105,7 @@ public class ThongKeDoanhThu extends JPanel {
 					.addGap(127)
 					.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
 		);
+		
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()

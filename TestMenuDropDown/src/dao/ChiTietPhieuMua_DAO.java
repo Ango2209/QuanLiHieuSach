@@ -17,12 +17,13 @@ public class ChiTietPhieuMua_DAO {
 		try (Connection conn = ConnectDB.getConnection()) {
 			try (ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
 				while (rs.next()) {
-					String maPhieu = rs.getString(1);
-					String maSach = rs.getString(2);
-					int soLuong = rs.getInt(3);
-					double soTien = rs.getDouble(4);
+					String maCTPMH=rs.getString(1);
+					String maPhieu = rs.getString(2);
+					String maSach = rs.getString(3);
+					int soLuong = rs.getInt(4);
+					double soTien = rs.getDouble(5);
 					
-					ChiTietPhieuMuaHang ctpmh=new ChiTietPhieuMuaHang(maPhieu,maSach,soLuong,soTien);
+					ChiTietPhieuMuaHang ctpmh=new ChiTietPhieuMuaHang(maCTPMH,maPhieu,maSach,soLuong,soTien);
 					dsCTPhieuMH.add(ctpmh);
 				}
 			}
@@ -40,7 +41,7 @@ public class ChiTietPhieuMua_DAO {
 		PreparedStatement stmt = null;
 		int n = 0;
 		try {
-			stmt = con.prepareStatement("delete from ChiTietPhieuMuaHang where maPhieu=?");
+			stmt = con.prepareStatement("delete from ChiTietPhieuMuaHang where maChiTietPhieuMua=?");
 			stmt.setString(1, maCTPMH);
 			n = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -51,21 +52,12 @@ public class ChiTietPhieuMua_DAO {
 		return n>0;
 	}
 	
+
 	
 	
-	private void close(PreparedStatement stmt) {
-				if(stmt!=null)
-				try {
-					stmt.close();
-				}
-				catch(SQLException e) {
-					e.printStackTrace();
-				}
-				
-			}
 public String getMaxID() throws SQLException {
 		
-		String sql="select MAX(maPhieu) from ChiTietPhieuMuaHang";
+		String sql="select MAX(maChiTietPhieuMua) from ChiTietPhieuMuaHang";
 		try (Connection conn = ConnectDB.getConnection()) {
 			try (ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
 				rs.next();
@@ -74,7 +66,6 @@ public String getMaxID() throws SQLException {
 				if(rs.getString(1)==null) {
 					return "CTPM001";
 				}				
-				
 				else {					
 					long id=Long.parseLong(rs.getString(1).substring(4,rs.getString(1).trim().length()));
 					id++; 
@@ -92,11 +83,12 @@ public String getMaxID() throws SQLException {
 		PreparedStatement stmt = null;
 		int n = 0;
 		try {
-			stmt = con.prepareStatement("insert into" + " ChiTietPhieuMuaHang values(?,?,?,?)");
-			stmt.setString(1,ctPMH.getMaPhieuMuaHang());
-			stmt.setString(2, ctPMH.getMaSach());
-			stmt.setInt(3, ctPMH.getSoLuong());
-			stmt.setDouble(4, ctPMH.getTongTien());
+			stmt = con.prepareStatement("insert into" + " ChiTietPhieuMuaHang values(?,?,?,?,?)");
+			stmt.setString(1, ctPMH.getMaCTPMH());
+			stmt.setString(2,ctPMH.getMaPhieuMuaHang());
+			stmt.setString(3, ctPMH.getMaSach());
+			stmt.setInt(4, ctPMH.getSoLuong());
+			stmt.setDouble(5, ctPMH.getTongTien());
 			
 			n= stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -110,5 +102,15 @@ public String getMaxID() throws SQLException {
 			}
 		}
 		return n>0;
+	}
+	private void close(PreparedStatement stmt) {
+		if(stmt!=null)
+		try {
+			stmt.close();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

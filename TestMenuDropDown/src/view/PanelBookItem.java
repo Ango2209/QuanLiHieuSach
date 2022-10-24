@@ -4,11 +4,13 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -32,7 +34,10 @@ public class PanelBookItem extends JPanel {
     private NguoiDangNhap ndn;
 	private ChiTietPhieuMua_DAO ctPMH_DAO;
 	private PhieuMuaHang_DAO pmh_DAO;
-	public PanelBookItem(Sach sach) {
+	private PhieuMuaHang pmhHienTai;
+	
+	
+	public PanelBookItem(Sach sach) throws SQLException {
 		ctPMH_DAO=new ChiTietPhieuMua_DAO();
 		pmh_DAO=new PhieuMuaHang_DAO();
 		setBackground(new Color(203, 146, 187));
@@ -41,37 +46,34 @@ public class PanelBookItem extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:/Users/Admin/git/QuanLiHieuSach/TestMenuDropDown/src/img/Book-icon-item.png"));
 		lblNewLabel.setBackground(new Color(203, 146, 187));
-		
+		 setPhieuMuaHang();
+
 		JButton btnNewButton = new JButton("Mua ");
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				int soLuong=2;
-				ArrayList<PhieuMuaHang> Dspmh=new ArrayList<>();
+
 			
-				try {
-					
-					String maPhieu=ctPMH_DAO.getMaxID();
-					 Dspmh= pmh_DAO.getAllPMH();
-					System.out.println(maPhieu + sach.getMaSach() + soLuong);
-					
-					for(PhieuMuaHang pmh:Dspmh) {
-//						if(pmh.getMaPhieuMh()==)
-					}
-//					PhieuMuaHang 
-//					ChiTietPhieuMuaHang ctPMH=new ChiTietPhieuMuaHang("PMH001",sach.getMaSach(),soLuong,soLuong*sach.getDonGia());
-//					ctPMH_DAO.addCTPMH(ctPMH);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+			String soLuongMuonMua=JOptionPane.showInputDialog("Vui lòng nhập số lượng mà bạn muốn mua (Chỉ nhập số)");
+			
+			if(!(soLuongMuonMua.length()>0&& (soLuongMuonMua.matches("[0-9]+") )&&Integer.parseInt(soLuongMuonMua)< sach.getSoLuong() )) {
+				JOptionPane.showMessageDialog(null,"Số lượng sách phải là số và nhỏ hơn số lượng đang còn trong kho");
 				
 			}
+			try{
+				System.out.println();
+				String maCTPMH=ctPMH_DAO.getMaxID();
+				ChiTietPhieuMuaHang ct=new ChiTietPhieuMuaHang(maCTPMH,pmhHienTai.getMaPhieuMh(),sach.getMaSach(),Integer.parseInt(soLuongMuonMua),Integer.parseInt(soLuongMuonMua)*sach.getDonGia());
+				ctPMH_DAO.addCTPMH(ct);
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			}		
+				
 		});
-		
 		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
@@ -94,6 +96,7 @@ public class PanelBookItem extends JPanel {
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 		);
+		
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -136,6 +139,27 @@ public class PanelBookItem extends JPanel {
 		lbSoLuong.setBounds(71, 68, 158, 20);
 		panel.add(lbSoLuong);
 		setLayout(groupLayout);
+
+	}
+	public void setPhieuMuaHang() throws SQLException {
+		
+		
+			
+		
+		 pmhHienTai=pmh_DAO.getPhieuMH(false,"KH001");
+		
+			// TODO Auto-generated catch block
+
+
+//		String maPhieuMh, String maKhachHang, String maNhanVien, LocalDate ngayLapPhieu
+		if(pmhHienTai==null) {
+			
+			String maPhieu=pmh_DAO.getMaxID();
+			pmhHienTai=new PhieuMuaHang(maPhieu,"KH001",null,false);
+			pmh_DAO.addPMH(pmhHienTai);
+			System.out.println(pmhHienTai);
+		}
+
 
 	}
 }

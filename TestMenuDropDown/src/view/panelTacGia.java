@@ -132,6 +132,7 @@ public class panelTacGia extends JPanel implements MouseListener {
 		
 		JButton btnXoa = new JButton("Xóa");
 		btnXoa.addActionListener(new ActionListener() {
+	
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

@@ -1,11 +1,16 @@
 package view;
 
 import javax.swing.JPanel;
+import javax.naming.CompoundName;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.JobAttributes;
+
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
@@ -14,8 +19,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import dao.ChiTietPhieuMua_DAO;
+import dao.KhachHangDatHang_DAO;
+import dao.PhieuMuaHang_DAO;
 import dao.Sach_DAO;
 import entity.ChiTietPhieuMuaHang;
+import entity.KhachHangDatHang;
+import entity.PhieuMuaHang;
 import entity.Sach;
 import entity.TacGia;
 
@@ -24,18 +33,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class PanelThanhToan extends JPanel {
+public class PanelDatHang extends JPanel {
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
-	private ChiTietPhieuMua_DAO ctPMH_DAO;
+	
+	private PhieuMuaHang_DAO pmh_DAO;
    private Sach_DAO sach_DAO;
 	private DefaultTableModel tableModel;
-	public PanelThanhToan() {
-		ctPMH_DAO=new ChiTietPhieuMua_DAO();
-		sach_DAO=new Sach_DAO();
+	private KhachHangDatHang_DAO KhachHangDatHang_DAO;
+    private ChiTietPhieuMua_DAO ctpmh_DAO;
+	private JLabel lbTongTien;
+private ArrayList<KhachHangDatHang> dsKHDH;
+	private PhieuMuaHang pmh;
+	public PanelDatHang() throws SQLException {
+		KhachHangDatHang_DAO=new KhachHangDatHang_DAO();
+		pmh_DAO=new PhieuMuaHang_DAO();
+		ctpmh_DAO=new ChiTietPhieuMua_DAO();
+		dsKHDH=new ArrayList<>(); 
 		JPanel panel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -50,7 +67,7 @@ public class PanelThanhToan extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 730, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		
+	
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(128, 128, 255));
 		
@@ -64,12 +81,50 @@ public class PanelThanhToan extends JPanel {
 		lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/img/Money-icon.png")));
 		
 		JButton btnNewButton = new JButton("Xóa");
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				if(row>=0)
+				{				
+					
+					String ma = (String)table.getValueAt(row,0);
+					int show = JOptionPane.showConfirmDialog(null,"Bạn có chắc chắn muốn xóa",ma, JOptionPane.YES_NO_OPTION);
+					 if(show==JOptionPane.YES_OPTION)
+						 
+						try {
+							if(ctpmh_DAO.deleteChiTietPhieuMuaHang(ma))
+							{
+								tableModel.removeRow(row);						
+							}
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				}else {
+					JOptionPane.showMessageDialog(null, "Vui Lòng Chọn Dòng Cần Xóa");
+				}
+				
+				
+			}
+		});
 		btnNewButton.setBackground(new Color(176, 172, 213));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JButton btnNewButton_1 = new JButton("Hủy Toàn Bộ");
+		JButton btnNewButton_1 = new JButton("Mua Thêm");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				panel.removeAll();
+//		    	try {
+//					panel.add(new PanelXemSach());
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//		    	panel.repaint();
+//		    	panel.revalidate();	
+//				
 			}
 		});
 		btnNewButton_1.setBackground(new Color(176, 172, 213));
@@ -113,7 +168,7 @@ public class PanelThanhToan extends JPanel {
 				new Object[][] {
 				},
 				new String[] {
-						"Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB"
+						"Mã Phiếu","Mã Sách", "Tên Sách", "Đơn Giá", "Tên Tác Giả", "Loại Sách", "Số Lượng", "Tên NXB"
 				}
 			);
 		table.setModel(tableModel);
@@ -124,33 +179,64 @@ public class PanelThanhToan extends JPanel {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 		JButton btnNewButton_2 = new JButton("Đặt Hàng");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+//				JOptionPane.showConfirmDialog(btnNewButton_2, e)
+				try {
+					
+					if(pmh==null||dsKHDH.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Vui lòng chọn sách để mua");
+						return;
+					}
+					pmh_DAO.datHang(pmh.getMaPhieuMh(),"KH001" );
+					JOptionPane.showMessageDialog(null, "Đặt hàng thành công");
+					while (table.getRowCount() != 0) {
+						tableModel.removeRow(0);
+					}
+					lbTongTien.setText("0 VNĐ");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnNewButton_2.setBackground(new Color(0, 255, 0));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
+		 lbTongTien = new JLabel("0 VNĐ");
+		lbTongTien.setForeground(new Color(255, 0, 0));
+		lbTongTien.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(299)
+					.addGap(150)
 					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-					.addGap(157)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lbTongTien, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
+					.addGap(155)
 					.addComponent(btnNewButton_2)
-					.addContainerGap(425, Short.MAX_VALUE))
+					.addContainerGap(508, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-							.addGap(95)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(158, Short.MAX_VALUE))
+					.addGap(128)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lbTongTien, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(159, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 		
 		JLabel lblNewLabel = new JLabel("Đặt Hàng");
+		
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
@@ -167,21 +253,31 @@ public class PanelThanhToan extends JPanel {
 		panel_1.setLayout(gl_panel_1);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
-
+		loadDatHang();
 	}
+	
+	
 	public void loadDatHang() throws SQLException {
 		while (table.getRowCount() != 0) {
 			tableModel.removeRow(0);
 		}
-	ArrayList<ChiTietPhieuMuaHang> dsPhieuMua = new ArrayList<>();
-	ArrayList<Sach> dsSach=new ArrayList<>();
-	for (ChiTietPhieuMuaHang k : dsPhieuMua) {
-         for(Sach s:dsSach) {
-        	 if(s.getMaSach()==k.getMaSach()) {
-        		 tableModel.addRow(new Object []{s.getMaSach(),s.getTenSach(),k.getTongTien(),s.getNhaXB(),s.getTenLoaiSach(),k.getSoLuong(),s.getNhaXB()});
-        	 }
-         }
-	}
+		 pmh=pmh_DAO.getPhieuMH(false, "KH001");
+	
+	if(pmh==null) {
+		return;
 	}
 	
+	dsKHDH=KhachHangDatHang_DAO.getAllDatHang(pmh.getMaPhieuMh());
+	
+	System.out.println(dsKHDH);
+	float tongTien=0;
+	for (KhachHangDatHang k : dsKHDH) {
+
+		tableModel.addRow(new Object[] {k.getMaCTPMH(),k.getMaSach(),k.getTenSach(),k.getDonGia(),k.getTenTacGia(),k.getTenLoaiSach(),k.getSoLuong(),k.getTenNXB()});
+		tongTien+=Float.parseFloat(k.getDonGia());
+		
+	}
+	
+	lbTongTien.setText(tongTien+ "VNĐ");
+	}
 }

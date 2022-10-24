@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,10 +22,17 @@ public class PhieuMuaHang_DAO {
 				while (rs.next()) {
 					String maPhieu = rs.getString(1);
 					String maKhachHang = rs.getString(2);
-					String maNhanVien = rs.getString(3);
-					String ngayLapPhieu=rs.getString(4);
 					
-					PhieuMuaHang pmh=new PhieuMuaHang(maPhieu, maKhachHang, maNhanVien,LocalDate.parse(ngayLapPhieu,DateTimeFormatter.ISO_LOCAL_DATE));
+					
+					 LocalDate ngayLapPhieu;
+			         if(rs.getDate(3)==null) {
+			        	 ngayLapPhieu=null;
+			         }
+			         else {
+			        	 ngayLapPhieu=rs.getDate(3).toLocalDate();
+			         }
+					boolean tinhTrang=rs.getBoolean(4);
+					PhieuMuaHang pmh=new PhieuMuaHang(maPhieu, maKhachHang,ngayLapPhieu,tinhTrang);
 					dsPhieuMH.add(pmh);
 				}
 			}
@@ -34,9 +42,57 @@ public class PhieuMuaHang_DAO {
 		}
 	}
 	
-//public String getMaPhieuMuaHangHienTai(String maKH) throws SQLException {
+	public PhieuMuaHang getPhieuMH(boolean tinhTrang,String maKH) throws SQLException {
+		PhieuMuaHang phieuMH = null;
+		String sql="select * from PhieuMuaHang where thanhToan="+0+" and "+"maKhachHang=" + "'"+maKH+"'";
+		
+		try (Connection conn = ConnectDB.getConnection()) {
+			try (ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
+				while (rs.next()) {
+					String maPhieu = rs.getString(1);
+					String maKhachHang = rs.getString(2);					
+					 LocalDate ngayLapPhieu;
+			         if(rs.getDate(3)==null) {
+			        	 ngayLapPhieu=null;
+			         }
+			         else {
+			        	 ngayLapPhieu=rs.getDate(3).toLocalDate();
+			         }
+					phieuMH=new PhieuMuaHang(maPhieu, maKhachHang,ngayLapPhieu,tinhTrang);
+					
+				}
+			}
+
+			return phieuMH;
+		}
+
+		}
+	public boolean datHang(String maPMH, String maKH) throws SQLException {
+		ConnectDB.getInstance();
+		Connection con = ConnectDB.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("update PhieuMuaHang set thanhToan = ? where maPhieu=? and maKhachHang=?");
+			stmt.setBoolean(1, true);
+			stmt.setString(2, maPMH);
+			stmt.setString(3, maKH);
+			n= stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return n>0;
+	}
+//public String getPhieuMuaHangHienTai(boolean tinhTrang) throws SQLException {
 //	
-//		String sql="select maPhieu from PhieuMuaHang where maKhachHang="+"'"+maKH"'";
+//		String sql="select maPhieu from PhieuMuaHang where maKhachHang="+"'"+tinhTrang+"'";
 //		try (Connection conn = ConnectDB.getConnection()) {
 //			try (ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
 //				rs.next();
@@ -74,16 +130,7 @@ public class PhieuMuaHang_DAO {
 	
 	
 	
-	private void close(PreparedStatement stmt) {
-				if(stmt!=null)
-				try {
-					stmt.close();
-				}
-				catch(SQLException e) {
-					e.printStackTrace();
-				}
-				
-			}
+	
 public String getMaxID() throws SQLException {
 		
 		String sql="select MAX(maPhieu) from PhieuMuaHang";
@@ -91,9 +138,9 @@ public String getMaxID() throws SQLException {
 			try (ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
 				rs.next();
 				rs.getString(1);
-				System.out.println(rs.getString(1));
+		
 				if(rs.getString(1)==null) {
-					return "PH001";
+					return "PM001";
 				}				
 				
 				else {					
@@ -110,12 +157,20 @@ public boolean addPMH(PhieuMuaHang PMH) throws SQLException {
 	Connection con = ConnectDB.getConnection();
 	PreparedStatement stmt = null;
 	int n = 0;
+
 	try {
 		stmt = con.prepareStatement("insert into" + " PhieuMuaHang values(?,?,?,?)");
-		stmt.setString(1,PMH.getCtPhieuMh());
+		stmt.setString(1,PMH.getMaPhieuMh());
 		stmt.setString(2, PMH.getMaKhachHang());
-		stmt.setString(3, PMH.getMaNhanVien());
-		stmt.setString(4, PMH.getNgayLapPhieu().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy")));
+		if(PMH.getNgayLapPhieu()==null) {
+			stmt.setDate(3,null);
+			
+		}
+		else {
+			stmt.setDate(3,Date.valueOf(PMH.getNgayLapPhieu()));
+		}
+		
+		stmt.setBoolean(4, PMH.isDatHang());
 		
 		n= stmt.executeUpdate();
 	} catch (SQLException e) {
@@ -129,5 +184,15 @@ public boolean addPMH(PhieuMuaHang PMH) throws SQLException {
 		}
 	}
 	return n>0;
+}
+private void close(PreparedStatement stmt) {
+	if(stmt!=null)
+	try {
+		stmt.close();
+	}
+	catch(SQLException e) {
+		e.printStackTrace();
+	}
+	
 }
 }

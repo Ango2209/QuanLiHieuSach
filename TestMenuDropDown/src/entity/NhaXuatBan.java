@@ -34,6 +34,10 @@ public void setTenNXB(String tenNXB) {
 public String getDiaChi() {
 	return diaChi;
 }
+public NhaXuatBan(String tenNXB) {
+	super();
+	this.tenNXB = tenNXB;
+}
 public void setDiaChi(String diaChi) {
 	this.diaChi = diaChi;
 }

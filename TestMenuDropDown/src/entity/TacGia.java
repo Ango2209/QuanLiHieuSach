@@ -29,4 +29,8 @@ public String getTenTacGia() {
 public void setTenTacGia(String tenTacGia) {
 	this.tenTacGia = tenTacGia;
 }
+public TacGia(String tenTacGia) {
+	super();
+	this.tenTacGia = tenTacGia;
+}
 }

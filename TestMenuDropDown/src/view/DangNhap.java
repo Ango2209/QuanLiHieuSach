@@ -42,7 +42,7 @@ public class DangNhap extends JFrame {
 	private JButton btnDangNhap;
 	private ArrayList<TaiKhoan> lsTk;
 	private TaiKhoan_DAO tk_dao;
-	private NguoiDangNhap nDN;
+	protected NguoiDangNhap nDN;
 	private NhanVien_DAO nv_DAO;
 	private KhachHang_DAO kh_DAO;
 	/**
@@ -208,6 +208,7 @@ public class DangNhap extends JFrame {
 										nDN=new NguoiDangNhap(n.getTenTaiKhoan(), n.getMaNhanVien(), n.getTenNhanVien());
 									}
 								}
+								
 								GiaoDienNhanVien gdNV = new GiaoDienNhanVien();
 								gdNV.setVisible(true);
 							}												

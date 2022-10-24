@@ -10,7 +10,7 @@ import java.util.List;
 import connectDB.ConnectDB;
 import entity.Sach;
 import entity.TacGia;
-import entity.tour;
+
 
 public class TacGia_DAO {
 	public ArrayList<TacGia> getAllTacGia() throws SQLException {

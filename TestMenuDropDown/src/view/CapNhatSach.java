@@ -40,6 +40,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -53,12 +54,12 @@ public class CapNhatSach extends JPanel implements MouseListener {
 	private JTextField txtLoaiSach;
     private TacGia_DAO tacGia_DAO;
     private NhaXuatBan_DAO nxb_DAO;
-    private Sach_DAO sach_DAO;
+    private static Sach_DAO sach_DAO;
     private String maSachHientai;
 	/**
 	 * Create the panel.
 	 */
-	private DefaultTableModel tableModel;
+	private static DefaultTableModel tableModel;
 	private JTextField txtSoLuongDaBan;
 	protected static String donGia;
 	protected static String tenLoaiSach;
@@ -200,7 +201,7 @@ public class CapNhatSach extends JPanel implements MouseListener {
              soLuongDaBan=txtSoLuongDaBan.getText();
 			 maTacGia=comboBoxTacGia.getSelectedItem()+"";
 				 maNXB=comboBoxNXB.getSelectedItem()+"";
-				
+			
 				try {
 					String maSach=sach_DAO.getMaxID();
 					if(ktraTTSach(tenSach,donGia,tenLoaiSach,soLuong,soLuongDaBan)) {
@@ -359,6 +360,9 @@ public class CapNhatSach extends JPanel implements MouseListener {
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 				}
 			}
@@ -411,7 +415,8 @@ public void loadSach() throws SQLException {
 		}
 	ArrayList<Sach> dsSach = sach_DAO.getAllSach();
 	for (Sach k : dsSach) {
-		tableModel.addRow(new Object[] {k.getMaSach(),k.getNhaXB(),k.getTacGia(),k.getTenSach().trim(),k.getDonGia(),k.getTenLoaiSach().trim(),k.getSoLuong(),k.getSoLuongDaBan()});
+		
+		tableModel.addRow(new Object[] {k.getMaSach(),k.getNhaXB(),k.getMaTacGia(),k.getTenSach().trim(),k.getDonGia(),k.getTenLoaiSach().trim(),k.getSoLuong(),k.getSoLuongDaBan()});
 		
 	
 	}
@@ -426,15 +431,15 @@ public void mouseClicked(MouseEvent e) {
 	txtSoLuong.setText( table.getValueAt(row, 6).toString().trim());
 	txtSoLuongDaBan.setText( table.getValueAt(row, 7).toString().trim());
 }
-public static void readExcel(File fileInput) throws IOException {
+public static void readExcel(File fileInput) throws IOException, SQLException {
 	
 	FileInputStream file = new FileInputStream(fileInput);
 	XSSFWorkbook wb = new XSSFWorkbook(file); //chuyen file sang dinh dang excel
 	XSSFSheet sheet = wb.getSheetAt(0); //Đọc từ sheet 1
 	FormulaEvaluator fml = wb.getCreationHelper().createFormulaEvaluator();
 	int i = 0;
-	
-
+	int j = 1;
+    String maSach=sach_DAO.getMaxID();
 //	   tenSach=txtTenSach.getText();
 //       donGia=txtDonGia.getText();
 //       tenLoaiSach=txtLoaiSach.getText();
@@ -443,7 +448,16 @@ public static void readExcel(File fileInput) throws IOException {
 //		 maTacGia=comboBoxTacGia.getSelectedItem()+"";
 //			 maNXB=comboBoxNXB.getSelectedItem()+"";
 	for(Row row : sheet) {
+		if(j == 1) {
+			j=0;
+			
+		
+		}
+		else {
+			
+		
 		for(Cell cell : row ) {
+			
 			if(i==0) {
 				if(cell.getCellType()==CellType.STRING) {
 //					System.out.println(cell.getCellType()+"1");
@@ -473,6 +487,7 @@ public static void readExcel(File fileInput) throws IOException {
 				if(cell.getCellType()==CellType.NUMERIC) {
 //					System.out.println(cell.getCellType()+"4");
 					donGia =  cell.getNumericCellValue()+"";
+					
 				}
 //				System.out.println(i);
 				i++;
@@ -488,7 +503,7 @@ public static void readExcel(File fileInput) throws IOException {
 			else if(i==5) {
 				if(cell.getCellType()==CellType.NUMERIC) {
 //					System.out.println(cell.getCellType()+"6");
-					soLuong = cell.getNumericCellValue()+"" ;
+					soLuong = new DecimalFormat("#").format(cell.getNumericCellValue());
 				}
 //				System.out.println(i);
 				i++;
@@ -496,17 +511,26 @@ public static void readExcel(File fileInput) throws IOException {
 			else if(i==6) {
 				if(cell.getCellType()==CellType.NUMERIC) {
 //					System.out.println(cell.getCellType()+"7");
-					soLuongDaBan =  cell.getNumericCellValue()+"";
+					soLuongDaBan =  new DecimalFormat("#").format(cell.getNumericCellValue());
 				}
 //				System.out.println(i);
 				i=0;
 			}
 			
 		}
+						
+							
+			long id=Long.parseLong(maSach.substring(2,maSach.trim().length()));
+			id++; 
+			maSach= "TG"+ String.format("%03d", id);					
+				
 		System.out.println(maNXB+"-"+maTacGia+"-"+tenSach+"-"+donGia+"-"+tenLoaiSach+"-"+soLuong+"-"+soLuongDaBan);
 		
+		tableModel.addRow(new Object[] {maSach,maNXB,maTacGia,tenSach,donGia,tenLoaiSach,soLuong,soLuongDaBan});
 		
-	}
+		Sach sach = new Sach(maSach,maNXB,maTacGia,tenSach,Double.parseDouble(donGia),tenLoaiSach,Integer.parseInt(soLuong),Integer.parseInt(soLuongDaBan));
+		sach_DAO.addSach(sach);
+	}}
 	
 }
 

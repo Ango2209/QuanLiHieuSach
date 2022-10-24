@@ -3,17 +3,22 @@ package entity;
 public class KhachHang {
  private String maKhachHang;
  private String tenKhachHang;
- private int sdtKhachHang;
+ private String sdtKhachHang;
  private String email;
  private String gioiTinh;
  private String tenTaiKhoan;
- 
 public KhachHang() {
 	super();
 	// TODO Auto-generated constructor stub
 }
 
-public KhachHang(String maKhachHang, String tenKhachHang, int sdtKhachHang, String email, String gioiTinh,
+
+public String getSdtKhachHang() {
+	return sdtKhachHang;
+}
+
+
+public KhachHang(String maKhachHang, String tenKhachHang, String sdtKhachHang, String email, String gioiTinh,
 		String tenTaiKhoan) {
 	super();
 	this.maKhachHang = maKhachHang;
@@ -23,6 +28,24 @@ public KhachHang(String maKhachHang, String tenKhachHang, int sdtKhachHang, Stri
 	this.gioiTinh = gioiTinh;
 	this.tenTaiKhoan = tenTaiKhoan;
 }
+
+
+public void setSdtKhachHang(String sdtKhachHang) {
+	this.sdtKhachHang = sdtKhachHang;
+}
+
+
+
+
+public String getTenTaiKhoan() {
+	return tenTaiKhoan;
+}
+
+
+public void setTenTaiKhoan(String tenTaiKhoan) {
+	this.tenTaiKhoan = tenTaiKhoan;
+}
+
 
 public String getMaKhachHang() {
 	return maKhachHang;
@@ -36,12 +59,7 @@ public String getTenKhachHang() {
 public void setTenKhachHang(String tenKhachHang) {
 	this.tenKhachHang = tenKhachHang;
 }
-public int getSdtKhachHang() {
-	return sdtKhachHang;
-}
-public void setSdtKhachHang(int sdtKhachHang) {
-	this.sdtKhachHang = sdtKhachHang;
-}
+
 public String getEmail() {
 	return email;
 }
@@ -54,11 +72,32 @@ public String getGioiTinh() {
 public void setGioiTinh(String gioiTinh) {
 	this.gioiTinh = gioiTinh;
 }
-public String getTenTaiKhoan() {
-	return tenTaiKhoan;
+
+
+public KhachHang(String maKhachHang, String tenKhachHang, String sdtKhachHang, String email, String gioiTinh) {
+	super();
+	this.maKhachHang = maKhachHang;
+	this.tenKhachHang = tenKhachHang;
+	this.sdtKhachHang = sdtKhachHang;
+	this.email = email;
+	this.gioiTinh = gioiTinh;
 }
-public void setTenTaiKhoan(String tenTaiKhoan) {
-	this.tenTaiKhoan = tenTaiKhoan;
+
+
+public KhachHang(String maKhachHang, String tenKhachHang, String sdtKhachHang) {
+	super();
+	this.maKhachHang = maKhachHang;
+	this.tenKhachHang = tenKhachHang;
+	this.sdtKhachHang = sdtKhachHang;
 }
+
+
+public KhachHang(String tenKhachHang, String sdtKhachHang) {
+	super();
+	this.tenKhachHang = tenKhachHang;
+	this.sdtKhachHang = sdtKhachHang;
+}
+
+
 
 }
